@@ -13,7 +13,9 @@ WHERE `cfu` > 10;
 
 <!-- TERZA QUERY -->
 
-
+SELECT *, TIMESTAMPDIFF(year, `date_of_birth`, CURDATE()) AS `age`
+FROM `students`
+WHERE TIMESTAMPDIFF(year, `date_of_birth`, CURDATE()) > 30;
 
 <!-- QUARTA QUERY -->
 
