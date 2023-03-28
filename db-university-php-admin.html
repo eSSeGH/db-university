@@ -23,7 +23,13 @@ WHERE `period`
 LIKE 'I semestre'
 AND `year` = 1;
 
-<!-- PRIMA QUERY -->
+<!-- QUINTA QUERY -->
+
+SELECT *, TIME_FORMAT(`hour`, "%H") AS `hour`
+FROM `exams`
+WHERE TIME_FORMAT(`hour`, "%H") >= 14
+AND `date` LIKE '2020-06-20';
+
 <!-- PRIMA QUERY -->
 <!-- PRIMA QUERY -->
 <!-- PRIMA QUERY -->
