@@ -39,9 +39,32 @@ INNER JOIN `departments`
 ON `departments`.`id` = `degrees`.`department_id`
 ORDER BY `student_name` ASC;
 
-<!-- QUINTA QUERY -->
+<!-- 5 Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti -->
 
-<!-- SESTA QUERY -->
+SELECT `degrees`.`name` AS 'degree_name', `courses`.`name` AS 'course_name', CONCAT(`teachers`.`surname`,'
+',`teachers`.`name`) AS 'teacher_name'
+FROM `degrees`
+INNER JOIN `courses`
+ON `courses`.`degree_id` = `degrees`.`id`
+INNER JOIN `course_teacher`
+ON `courses`.`id` = `course_teacher`.`course_id`
+INNER JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+ORDER BY `course_name` ASC;
+
+<!-- 6 Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica -->
+
+SELECT CONCAT(`teachers`.`surname`,' ',`teachers`.`name`) AS 'teacher_name', `departments`.`name` AS 'department_name'
+FROM `departments`
+INNER JOIN `degrees`
+ON `departments`.`id` = `degrees`.`department_id`
+INNER JOIN `courses`
+ON `courses`.`degree_id` = `degrees`.`id`
+INNER JOIN `course_teacher`
+ON `courses`.`id` = `course_teacher`.`course_id`
+INNER JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+WHERE `departments`.`name` = 'Dipartimento di Matematica';
 
 <!-- SETTIMA QUERY -->
 
@@ -50,7 +73,11 @@ ORDER BY `student_name` ASC;
     QUERY CON GROUP 
 -->
 
-<!-- PRIMA QUERY -->
+<!-- 1 Contare quanti iscritti ci sono stati ogni anno -->
+
+SELECT COUNT(*) AS 'enrolled_students', YEAR(`enrolment_date`) AS 'year'
+FROM `students`
+GROUP BY YEAR(`enrolment_date`);
 
 <!-- SECONDA QUERY -->
 
