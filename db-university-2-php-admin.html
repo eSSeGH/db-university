@@ -55,7 +55,8 @@ ORDER BY `course_name` ASC;
 
 <!-- 6 Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica -->
 
-SELECT CONCAT(`teachers`.`surname`,' ',`teachers`.`name`) AS 'teacher_name', `departments`.`name` AS 'department_name'
+SELECT DISTINCT CONCAT(`teachers`.`surname`,' ',`teachers`.`name`) AS 'teacher_name', `departments`.`name` AS
+'department_name'
 FROM `departments`
 INNER JOIN `degrees`
 ON `departments`.`id` = `degrees`.`department_id`
